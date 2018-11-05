@@ -12,7 +12,7 @@ void main() {
       // When we navigate to the "/" route, build the FirstScreen Widget
       '/': (context) => LoginScreen(),
       // When we navigate to the "/second" route, build the SecondScreen Widget
-      '/second': (context) => IndexScreen(),
+      '/index': (context) => IndexScreen(),
     },
   ));
 }
