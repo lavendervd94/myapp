@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'index.dart';
 import 'login.dart';
 
 void main() {
@@ -10,9 +9,7 @@ void main() {
     initialRoute: '/',
     routes: {
       // When we navigate to the "/" route, build the FirstScreen Widget
-      '/': (context) => LoginScreen(),
-      // When we navigate to the "/second" route, build the SecondScreen Widget
-      '/index': (context) => IndexScreen(),
+      '/': (context) => LoginScreen()
     },
   ));
 }

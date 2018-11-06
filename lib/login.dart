@@ -1,15 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/index.dart';
+
+import 'common/choice.dart';
 
 class LoginScreen extends StatelessWidget {
+  List<Choice> choices = const <Choice>[
+    const Choice(title: 'ĐĂNG NHẬP', icon: Icons.directions_car),
+    const Choice(title: 'ĐĂNG KÝ', icon: Icons.directions_bike),
+  ];
+
   login() async {}
 
   Widget _inputLogin(TextEditingController controller, String label) {
     return Padding(
       padding: const EdgeInsets.fromLTRB(80.0, 15.0, 80.0, 0.0),
       child: TextFormField(
+          style: TextStyle(height: 1.0, color: Colors.black, fontSize: 15.0),
           decoration: InputDecoration(
             labelText: label,
-            labelStyle: TextStyle(fontSize: 14.0),
+            contentPadding: const EdgeInsets.all(12.0),
+            labelStyle: TextStyle(fontSize: 15.0),
             border: OutlineInputBorder(
               borderRadius: new BorderRadius.circular(13.0),
             ),
@@ -22,106 +32,91 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final myController = new TextEditingController();
     double height = MediaQuery.of(context).size.height;
-    return Scaffold(
-      body: Card(
-        margin: const EdgeInsets.only(top: 25.0),
-        child: ListView(
-          children: <Widget>[
-            SizedBox(
-              height: height * 0.12,
-            ),
-            Center(
-              child: Text('Đăng nhập',
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    color: Colors.lightBlueAccent[400],
+    final colorCustom = Colors.lightBlueAccent[700];
+    return MaterialApp(
+        home: DefaultTabController(
+            length: 2,
+            child: Scaffold(
+              appBar: AppBar(
+                  backgroundColor: colorCustom,
+                  title: TabBar(
+                    indicatorColor: Colors.white,
+                    tabs: [
+                      Tab(text: 'Đăng nhập', icon: Icon(Icons.person)),
+                      Tab(text: 'Đăng ký', icon: Icon(Icons.create))
+                    ],
                   )),
-            ),
-            SizedBox(
-              height: 30.0,
-            ),
-            _inputLogin(myController, 'Tên đăng nhập'),
-            _inputLogin(myController, 'Mật khẩu'),
-            SizedBox(
-              height: 20.0,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  child: new Padding(
-                    padding: const EdgeInsets.fromLTRB(80.0, 0.0, 80.0, 0.0),
-                    child: ButtonTheme(
-                      height: 45.0,
-                      child: RaisedButton(
-                        child: const Text(
-                          'Đăng nhập',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        color: Colors.lightBlueAccent[400],
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(20.0)),
-                        onPressed: () {
-                          Navigator.pushNamed(context, '/index');
-                        },
+              body: TabBarView(
+                children: <Widget>[
+                  ListView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: <Widget>[
+                      SizedBox(
+                        height: height * 0.12,
                       ),
-                    ),
-                  ),
-                )
-              ],
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Expanded(
-                  flex: 4,
-                  child: new Padding(
-                    padding: const EdgeInsets.fromLTRB(80.0, 10.0, 5.0, 0.0),
-                    child: ButtonTheme(
-                      height: 45.0,
-                      child: RaisedButton(
-                        child: const Text(
-                          'Đăng kí',
-                          style: TextStyle(color: Colors.white),
+                      Center(
+                        child: Image.asset(
+                          'assets/logo.png',
+                          height: 90.0,
+                          width: 90.0,
                         ),
-                        color: Colors.lightBlueAccent[400],
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(20.0)),
-                        onPressed: () {
-                          login();
-                        },
                       ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 5,
-                  child: new Padding(
-                    padding: const EdgeInsets.fromLTRB(5.0, 10.0, 80.0, 0.0),
-                    child: ButtonTheme(
-                      height: 45.0,
-                      child: RaisedButton(
-                        child: const Text(
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      _inputLogin(myController, 'Tên đăng nhập'),
+                      _inputLogin(myController, 'Mật khẩu'),
+                      SizedBox(
+                        height: 15.0,
+                      ),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          Expanded(
+                            child: new Padding(
+                              padding:
+                                  EdgeInsets.fromLTRB(80.0, 0.0, 80.0, 0.0),
+                              child: ButtonTheme(
+                                height: 40.0,
+                                child: RaisedButton(
+                                  child: Text(
+                                    'Đăng nhập',
+                                    style: TextStyle(
+                                        color: Colors.white, fontSize: 15.0),
+                                  ),
+                                  color: colorCustom,
+                                  shape: new RoundedRectangleBorder(
+                                      borderRadius:
+                                          new BorderRadius.circular(13.0)),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => IndexScreen()),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),
+                      Center(
+                        child: new InkWell(
+                            child: new Text(
                           'Quên mật khẩu',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                        color: Colors.lightBlueAccent[400],
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(20.0)),
-                        onPressed: () {
-                          login();
-                        },
-                      ),
-                    ),
+                          style: TextStyle(fontSize: 15.0, color: colorCustom),
+                        )),
+                      )
+                    ],
                   ),
-                )
-              ],
-            )
-          ],
-        ),
-      ),
-    );
+                  new Text('data'),
+                ],
+              ),
+            )));
   }
 }
