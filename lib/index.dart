@@ -44,8 +44,8 @@ class MyHomePage extends StatelessWidget {
                                 shape: BoxShape.circle,
                                 image: new DecorationImage(
                                     fit: BoxFit.fill,
-                                    image: new NetworkImage(
-                                        "https://i.imgur.com/BoN9kdC.png")))),
+                                    image: new AssetImage(
+                                        "assets/avatar.jpg")))),
                       ),
                       Expanded(
                         flex: 3,
@@ -69,7 +69,7 @@ class MyHomePage extends StatelessWidget {
                   image: new DecorationImage(
                       fit: BoxFit.fill,
                       image:
-                          new NetworkImage("https://github.com/flutter/website/blob/master/src/_includes/code/layout/lakes/images/lake.jpg?raw=true"))),
+                          new AssetImage("assets/paper.jpg"))),
             ),
             ListTile(
               title: Text('Item 1'),
