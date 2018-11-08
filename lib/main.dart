@@ -1,15 +1,32 @@
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:myapp/login.dart';
 
 void main() {
   runApp(MaterialApp(
-    title: 'Named Routes Demo',
-    // Start the app with the "/" named route. In our case, the app will start
-    // on the FirstScreen Widget
-    initialRoute: '/',
-    routes: {
-      // When we navigate to the "/" route, build the FirstScreen Widget
-      '/': (context) => LoginScreen()
-    },
+    localizationsDelegates: [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+    ],
+    home: MainPage(),
+    supportedLocales: [
+      const Locale('vi', 'VN'), 
+    ],
   ));
 }
+
+
+class MainPage extends StatefulWidget {
+  MainPage({Key key}) : super(key: key);
+
+  @override
+  _MainPageState createState() => new _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return LoginScreen();
+  }
+}
+

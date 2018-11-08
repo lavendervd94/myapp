@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/index.dart';
 
-import 'common/choice.dart';
-
 class LoginScreen extends StatelessWidget {
-  List<Choice> choices = const <Choice>[
-    const Choice(title: 'ĐĂNG NHẬP', icon: Icons.directions_car),
-    const Choice(title: 'ĐĂNG KÝ', icon: Icons.directions_bike),
-  ];
 
   login() async {}
 
